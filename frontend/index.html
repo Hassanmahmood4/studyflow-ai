@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studyflow</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme"></button>
+      <h1 class="logo">Studyflow</h1>
+      <p class="tagline">Tasks & focus in one place</p>
+    </header>
+    <main class="main">
+      <section class="section ai-section">
+        <h2 class="section-title">AI suggestions</h2>
+        <div class="ai-summary hidden" id="ai-summary"></div>
+        <div class="ai-smart-task hidden" id="ai-smart-task"></div>
+        <div class="suggestions-wrap">
+          <div class="suggestions-skeletons" id="suggestions-skeletons">
+            <div class="skeleton skeleton-suggestion"></div>
+            <div class="skeleton skeleton-suggestion"></div>
+            <div class="skeleton skeleton-suggestion"></div>
+          </div>
+          <div class="suggestions-content hidden" id="suggestions-content"></div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-header">
+          <h2 class="section-title">Your tasks</h2>
+          <button type="button" class="btn btn-primary" id="add-task-btn">Add task</button>
+        </div>
+        <form class="task-form hidden" id="task-form">
+          <input type="text" class="input" id="task-title" placeholder="Task title" required />
+          <textarea class="input" id="task-description" placeholder="Description (optional)" rows="2"></textarea>
+          <label class="input-label">Deadline (date & time)</label>
+          <input type="datetime-local" class="input" id="task-due" />
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-ghost" id="cancel-task-btn">Cancel</button>
+          </div>
+        </form>
+        <div class="tasks-skeletons" id="tasks-skeletons">
+          <div class="skeleton skeleton-task"></div>
+          <div class="skeleton skeleton-task"></div>
+        </div>
+        <div class="tasks-list hidden" id="tasks-list"></div>
+        <div class="empty-state-wrap hidden" id="tasks-empty">
+          <p class="empty-state-title">No tasks yet</p>
+          <p class="empty-state-p">Add your first task to get started.</p>
+          <button type="button" class="btn btn-primary" id="empty-add-task-btn">Add your first task</button>
+        </div>
+      </section>
+    </main>
+    <div class="toast" id="toast"></div>
+  </div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Environment and secrets (do not commit .env)
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.Python
+venv/
+.venv/
+*.egg-info/
+.eggs/
+
+# Django
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# IDE
+.idea/
+*.swp
+*.swo
+
+# Nested / duplicate project folder
+Studyflow-AI/

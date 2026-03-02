@@ -13,7 +13,49 @@
       <h1 class="logo">Studyflow</h1>
       <p class="tagline">Tasks & focus in one place</p>
     </header>
-    <main class="main">
+    <div class="main-with-sidebar">
+      <aside class="done-section section">
+        <h2 class="section-title">Done</h2>
+        <div class="done-skeletons hidden" id="done-skeletons">
+          <div class="skeleton skeleton-task"></div>
+        </div>
+        <div class="done-list hidden" id="done-list"></div>
+        <div class="empty-state-wrap empty-done" id="done-empty">
+          <p class="empty-state-title">No completed tasks</p>
+          <p class="empty-state-p">Complete tasks to see them here.</p>
+        </div>
+      </aside>
+      <main class="main">
+      <section class="section calendar-section">
+        <h2 class="section-title">Calendar</h2>
+        <div class="calendar-header">
+          <button type="button" class="btn btn-ghost calendar-nav" id="calendar-prev" aria-label="Previous month">‹</button>
+          <span class="calendar-month-year" id="calendar-month-year"></span>
+          <button type="button" class="btn btn-ghost calendar-nav" id="calendar-next" aria-label="Next month">›</button>
+        </div>
+        <div class="calendar-weekdays">
+          <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+        </div>
+        <div class="calendar-grid" id="calendar-grid"></div>
+      </section>
+      <section class="section completion-section">
+        <h2 class="section-title">Task completion</h2>
+        <div class="completion-summary">
+          <div class="completion-stats">
+            <span class="completion-count" id="completion-done">0</span>
+            <span class="completion-of"> of </span>
+            <span class="completion-total" id="completion-total">0</span>
+            <span class="completion-label"> tasks completed</span>
+          </div>
+          <div class="completion-bar-wrap">
+            <div class="completion-bar-fill" id="completion-bar" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="completion-chart-wrap">
+          <p class="chart-title">Completed vs to do</p>
+          <div class="completion-chart completion-bars" id="completion-chart"></div>
+        </div>
+      </section>
       <section class="section ai-section">
         <h2 class="section-title">AI suggestions</h2>
         <div class="ai-summary hidden" id="ai-summary"></div>
@@ -53,7 +95,8 @@
           <button type="button" class="btn btn-primary" id="empty-add-task-btn">Add your first task</button>
         </div>
       </section>
-    </main>
+      </main>
+    </div>
     <div class="toast" id="toast"></div>
   </div>
   <script src="/static/app.js"></script>

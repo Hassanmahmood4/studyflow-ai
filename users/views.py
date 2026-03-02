@@ -177,9 +177,13 @@ def task_list_create(request):
 
 
 @csrf_exempt
-@require_http_methods(["PUT", "DELETE"])
+@require_http_methods(["GET", "PUT", "DELETE"])
 def task_detail(request, pk):
     task = get_object_or_404(Task, pk=pk)
+
+    if request.method == "GET":
+        serializer = TaskSerializer(task)
+        return JsonResponse(serializer.data)
 
     if request.method == "DELETE":
         task.delete()

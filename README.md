@@ -1,6 +1,14 @@
 # Studyflow AI
 
-A study and task management app with AI-powered suggestions. Built with **Django 5+** and a vanilla JS/CSS frontend.
+**About:** A lightweight study and task manager with AI-powered suggestions. Django + vanilla JS. Add tasks, set deadlines, and get smart next-step ideas—with or without an OpenAI API key.
+
+## Project description
+
+**Studyflow AI** is a lightweight study and task manager that helps you stay focused by combining a simple task list with AI-generated suggestions. You get a single place to see what to do next, add deadlines, and tick off completed work—without leaving the app.
+
+The app uses **Django** on the backend and a **vanilla JavaScript** frontend (no framework), so it’s easy to run locally or deploy. When you set an optional **OpenAI API key**, it suggests new tasks based on your current list; without a key, it still works using built-in suggestions. Tasks you add from suggestions appear only under “Your tasks,” and the AI section always shows at least three new ideas so you never run out of options. A dark/light theme and clear hover states (including brown accents) keep the interface readable and pleasant to use.
+
+Whether you use it for daily study planning, project deadlines, or quick to-dos, Studyflow AI keeps everything in one place with minimal setup.
 
 ## Features
 

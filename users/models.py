@@ -11,6 +11,7 @@ class Task(models.Model):
     description = models.TextField(blank=True)
     due_date = models.DateField(null=True, blank=True)
     due_datetime = models.DateTimeField(null=True, blank=True, help_text="Deadline date and time")
+    duration_minutes = models.PositiveIntegerField(null=True, blank=True, help_text="Time allocated in minutes")
     completed = models.BooleanField(default=False)
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default="medium")
     order = models.PositiveIntegerField(default=0)

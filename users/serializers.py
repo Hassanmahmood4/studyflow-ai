@@ -17,6 +17,8 @@ class TaskSerializer(serializers.ModelSerializer):
             data["due_date"] = None
         if data.get("due_datetime") == "":
             data["due_datetime"] = None
+        if data.get("duration_minutes") == "":
+            data["duration_minutes"] = None
         if "order" not in data:
             data["order"] = 0
         if "priority" not in data:

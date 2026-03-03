@@ -14,7 +14,7 @@
       <p class="tagline">Tasks & focus in one place</p>
     </header>
     <div class="main-with-sidebar">
-      <aside class="done-section section">
+      <aside class="done-section section" id="done-section">
         <h2 class="section-title">Done</h2>
         <div class="done-skeletons hidden" id="done-skeletons">
           <div class="skeleton skeleton-task"></div>
@@ -26,6 +26,7 @@
         </div>
       </aside>
       <main class="main">
+      <div class="calendar-and-stats">
       <section class="section calendar-section">
         <h2 class="section-title">Calendar</h2>
         <div class="calendar-header">
@@ -33,11 +34,38 @@
           <span class="calendar-month-year" id="calendar-month-year"></span>
           <button type="button" class="btn btn-ghost calendar-nav" id="calendar-next" aria-label="Next month">›</button>
         </div>
+        <div class="calendar-today-wrap">
+          <button type="button" class="btn btn-ghost calendar-today-btn" id="calendar-today">Today</button>
+          <label class="calendar-goto-label">Go to date:</label>
+          <input type="date" class="input calendar-goto-date" id="calendar-goto-date" />
+          <button type="button" class="btn btn-ghost calendar-goto-btn" id="calendar-goto-btn">Go</button>
+        </div>
         <div class="calendar-weekdays">
           <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
         </div>
         <div class="calendar-grid" id="calendar-grid"></div>
+        <div class="calendar-day-detail hidden" id="calendar-day-detail">
+          <p class="calendar-day-detail-title" id="calendar-day-detail-title">Tasks on this day</p>
+          <ul class="calendar-day-detail-list" id="calendar-day-detail-list"></ul>
+          <button type="button" class="btn btn-primary btn-block" id="calendar-add-for-day">Add task for this day</button>
+        </div>
       </section>
+      <div class="calendar-right-column">
+        <section class="section streak-stats-section">
+          <h2 class="section-title">Streak &amp; stats</h2>
+          <div class="streak-stats-card">
+            <div class="streak-stat">
+              <span class="streak-value" id="streak-value">0</span>
+              <span class="streak-label">day streak</span>
+            </div>
+            <div class="streak-stat secondary">
+              <span class="streak-value" id="stats-total-done">0</span>
+              <span class="streak-label">tasks completed</span>
+            </div>
+          </div>
+        </section>
+      </div>
+      </div>
       <section class="section completion-section">
         <h2 class="section-title">Task completion</h2>
         <div class="completion-summary">
@@ -77,8 +105,10 @@
         <form class="task-form hidden" id="task-form">
           <input type="text" class="input" id="task-title" placeholder="Task title" required />
           <textarea class="input" id="task-description" placeholder="Description (optional)" rows="2"></textarea>
-          <label class="input-label">Deadline (date & time)</label>
-          <input type="datetime-local" class="input" id="task-due" />
+          <label class="input-label">Date & time (required)</label>
+          <input type="datetime-local" class="input" id="task-due" required />
+          <label class="input-label">Time allocated (minutes)</label>
+          <input type="number" class="input" id="task-duration" placeholder="e.g. 30" min="1" max="999" />
           <div class="form-actions">
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" class="btn btn-ghost" id="cancel-task-btn">Cancel</button>

@@ -158,6 +158,28 @@ def get_initial_app_data():
 
 
 @csrf_exempt
+@require_http_methods(["POST"])
+def task_reorder(request):
+    """Accept JSON body: { \"task_ids\": [1, 2, 3, ...] }. Set order by index."""
+    try:
+        body = json.loads(request.body.decode("utf-8"))
+    except (ValueError, UnicodeDecodeError):
+        return JsonResponse({"detail": "Invalid JSON"}, status=400)
+    task_ids = body.get("task_ids")
+    if not isinstance(task_ids, list):
+        return JsonResponse({"detail": "task_ids must be a list"}, status=400)
+    for idx, pk in enumerate(task_ids):
+        try:
+            task = Task.objects.get(pk=pk)
+            task.order = idx
+            task.save(update_fields=["order"])
+        except (Task.DoesNotExist, ValueError, TypeError):
+            pass
+    tasks = Task.objects.all()
+    return JsonResponse(TaskSerializer(tasks, many=True).data, safe=False)
+
+
+@csrf_exempt
 @require_http_methods(["GET", "POST"])
 def task_list_create(request):
     if request.method == "GET":
